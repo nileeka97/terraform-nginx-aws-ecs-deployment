@@ -53,14 +53,9 @@ To destroy the created resources and avoid incurring costs:
     ```hcl
     terraform destroy
 
-<<<<<<< HEAD
-##Modules
-###VPC Module
-=======
 ## Modules
 
 ### VPC Module
->>>>>>> 3866ea4d4173a1c7cac42c9aed9861576c923014
 The VPC module is sourced from terraform-aws-modules/vpc/aws and creates a Virtual Private Cloud with specified subnets, availability zones, and resource tags.
 
 ### Security Group Module
