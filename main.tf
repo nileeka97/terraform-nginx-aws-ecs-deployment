@@ -3,14 +3,12 @@ resource "aws_ecs_cluster" "ecs-cluster" {
   name = "${var.project_name}-${var.env}-cluster"
 }
 
-##########################################################################################
 
 # Define a CloudWatch log group with a name based on project and environment variables
 resource "aws_cloudwatch_log_group" "ecs-log-group" {
   name = "${var.project_name}-${var.env}-task-definition"
 }
 
-##########################################################################################
 
 # Define an ECS task definition with necessary configurations, including container definitions
 resource "aws_ecs_task_definition" "ecs-task" {
@@ -51,7 +49,6 @@ resource "aws_ecs_task_definition" "ecs-task" {
   ])
 }
 
-##########################################################################################
 
 # Define an ECS service with Fargate launch type, specifying network configuration
 resource "aws_ecs_service" "ecs-service" {
@@ -68,3 +65,4 @@ resource "aws_ecs_service" "ecs-service" {
     security_groups  = [module.security-group.security_group_id] # Replace with your security group ID
   }
 }
+
