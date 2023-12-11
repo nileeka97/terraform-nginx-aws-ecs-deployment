@@ -6,7 +6,7 @@ resource "aws_ecs_cluster" "ecs-cluster" {
 
 # Define a CloudWatch log group with a name based on project and environment variables
 resource "aws_cloudwatch_log_group" "ecs-log-group" {
-  name = "${var.project_name}-${var.env}-task-definition"
+  name = "/ecs/${var.project_name}-${var.env}-task-definition"
 }
 
 
@@ -35,13 +35,21 @@ resource "aws_ecs_task_definition" "ecs-task" {
         }
       ],
 
+      # Add environment variables file from S3
+      environmentFiles = [
+        {
+          value = var.s3_env_vars_file_arn,
+          type  = "s3"
+        }
+      ],
+
       # Configure AWS CloudWatch Logs for container
       logConfiguration = {
         logDriver = "awslogs"
         options = {
-          "awslogs-create-group"  = "true"
-          "awslogs-group"         = aws_cloudwatch_log_group.ecs-log-group.name
-          "awslogs-region"        = var.awslogs_region
+          "awslogs-create-group" = "true"
+          "awslogs-group"        = aws_cloudwatch_log_group.ecs-log-group.name
+          "awslogs-region"       = var.awslogs_region
           "awslogs-stream-prefix" = "ecs"
         }
       }
@@ -71,7 +79,6 @@ resource "aws_ecs_service" "ecs-service" {
     target_group_arn = aws_lb_target_group.ecs-target-group.arn
     container_name   = "${var.project_name}-${var.env}-con"
     container_port   = var.container_port
-    #elb_name         = aws_lb.ecs-alb.name # Add the ELB name here
   }
 }
 

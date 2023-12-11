@@ -13,6 +13,7 @@ variable "awslogs_region" {}
 variable "docker_image_name" {}
 variable "cpu" {}
 variable "memory" {}
+variable "s3_env_vars_file_arn" {}
 
 variable "health_check_path" {
   default = "/"
