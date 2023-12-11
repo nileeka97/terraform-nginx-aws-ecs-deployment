@@ -29,13 +29,14 @@ Before running this Terraform script, make sure you have the following:
     public_subnet_1_cidr_block = "10.0.1.0/24"
     public_subnet_2_cidr_block = "10.0.2.0/24"
     private_subnet_1_cidr_block = "10.0.3.0/24"
-    sg_port                 = 80
-    cpu                     = 256
-    memory                  = 512
-    container_port          = 80
-    host_port               = 80
-    docker_image_name       = "your-docker-image-name"
-    awslogs_region          = "us-east-1"
+    alb_sg_port          = "80"
+    container_port       = "80"
+    awslogs_region       = "ap-south-1"   #same as aws ecs region
+    docker_image_name    = "nginx:latest" # Replace with your desired Docker image
+    cpu                  = "256"
+    memory               = "512"
+    s3_env_vars_file_arn = "arn:aws:s3:::demo-project-dev-env-vars/vars.env"
+    health_check_path    = "/"
 
 
 3. Run the following commands:

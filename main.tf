@@ -47,9 +47,9 @@ resource "aws_ecs_task_definition" "ecs-task" {
       logConfiguration = {
         logDriver = "awslogs"
         options = {
-          "awslogs-create-group" = "true"
-          "awslogs-group"        = aws_cloudwatch_log_group.ecs-log-group.name
-          "awslogs-region"       = var.awslogs_region
+          "awslogs-create-group"  = "true"
+          "awslogs-group"         = aws_cloudwatch_log_group.ecs-log-group.name
+          "awslogs-region"        = var.awslogs_region
           "awslogs-stream-prefix" = "ecs"
         }
       }
