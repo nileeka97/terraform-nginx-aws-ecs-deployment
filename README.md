@@ -63,22 +63,17 @@ To destroy the created resources and avoid incurring costs:
 >>>>>>> 3866ea4d4173a1c7cac42c9aed9861576c923014
 The VPC module is sourced from terraform-aws-modules/vpc/aws and creates a Virtual Private Cloud with specified subnets, availability zones, and resource tags.
 
-
 ### Security Group Module
 The Security Group module is sourced from terraform-aws-modules/security-group/aws and configures a security group with ingress and egress rules.
-
 
 ### ECS Cluster
 The ECS Cluster is created using the aws_ecs_cluster resource.
 
-
 ### CloudWatch Log Group
 A CloudWatch log group is defined using the aws_cloudwatch_log_group resource to store container logs.
 
-
 ### ECS Task Definition
 The ECS Task Definition is configured with container definitions, resource requirements, and CloudWatch log settings.
-
 
 ### ECS Service
 The ECS Service is set up with Fargate launch type, specifying network configuration and associating it with the previously defined ECS cluster and task definition.
