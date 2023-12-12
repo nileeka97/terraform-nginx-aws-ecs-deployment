@@ -14,8 +14,8 @@ Before running this Terraform script, make sure you have the following:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/your/repository.git
-   cd repository
+   git clone https://github.com/nileeka97/terraform-nginx-aws-ecs-deployment
+   cd terraform-nginx-aws-ecs-deployment
 
 
 2. Create a terraform.tfvars file and provide necessary variables:
