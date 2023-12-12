@@ -38,7 +38,6 @@ Before running this Terraform script, make sure you have the following:
     s3_env_vars_file_arn = "arn:aws:s3:::demo-project-dev-env-vars/vars.env"
     health_check_path    = "/"
 
-
 3. Run the following commands:
     
     ```hcl
@@ -73,3 +72,12 @@ The ECS Task Definition is configured with container definitions, resource requi
 
 ### ECS Service
 The ECS Service is set up with Fargate launch type, specifying network configuration and associating it with the previously defined ECS cluster and task definition.
+
+### Target Group
+This module creates an ECS target group associated with the Application Load Balancer.
+
+### Load Balancer
+This module creates an Application Load Balancer (ALB) for your ECS services. Adjust the settings as per your requirements.
+
+### LB Listener
+This resource creates a listener for the ALB. In this example, it's set up for HTTP traffic on port 80 and forwards it to the ECS target group
